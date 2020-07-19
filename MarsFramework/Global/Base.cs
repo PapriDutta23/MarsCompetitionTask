@@ -4,6 +4,7 @@ using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using RelevantCodes.ExtentReports;
+using RelevantCodes.ExtentReports.Model;
 using System;
 using static MarsFramework.Global.GlobalDefinitions;
 
@@ -17,6 +18,7 @@ namespace MarsFramework.Global
         public static String ExcelPath = MarsResource.ExcelPath;
         public static string ScreenshotPath = MarsResource.ScreenShotPath;
         public static string ReportPath = MarsResource.ReportPath;
+       
         #endregion
 
         #region reports
@@ -30,6 +32,8 @@ namespace MarsFramework.Global
         {
 
             // advisasble to read this documentation before proceeding http://extentreports.relevantcodes.com/net/
+
+            //Choosing and defining the Browser
             switch (Browser)
             {
 
@@ -43,9 +47,11 @@ namespace MarsFramework.Global
 
             }
 
+            
             #region Initialise Reports
-
-            extent = new ExtentReports(ReportPath, false, DisplayOrder.NewestFirst);
+   
+            //extent = new ExtentReports(ReportPath, false, DisplayOrder.NewestFirst);
+            extent = new ExtentReports(@"MarsFramework\TestReports\TestRunReport.html", false, DisplayOrder.NewestFirst);
             extent.LoadConfig(MarsResource.ReportXMLPath);
 
             #endregion
@@ -60,21 +66,27 @@ namespace MarsFramework.Global
                 SignUp obj = new SignUp();
                 obj.register();
             }
+        }
 
+
+        public static string BaseUrl
+        {
+            get { return ConstantHelpers.Url; }
         }
 
 
         [TearDown]
+
         public void TearDown()
         {
-            // Screenshot
-            String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");//AddScreenCapture(@"E:\Dropbox\VisualStudio\Projects\Beehive\TestReports\ScreenShots\");
+            //Screenshot
+            String img = SaveScreenShotClass.SaveScreenshot(GlobalDefinitions.driver, "Report");
             test.Log(LogStatus.Info, "Image example: " + img);
-            // end test. (Reports)
-            extent.EndTest(test);
-            // calling Flush writes everything to the log file (Reports)
+           // end test. (Reports)
+           extent.EndTest(test);
+           // calling Flush writes everything to the log file(Reports)
             extent.Flush();
-            // Close the driver :)            
+            //Close the driver:)            
             GlobalDefinitions.driver.Close();
             GlobalDefinitions.driver.Quit();
         }

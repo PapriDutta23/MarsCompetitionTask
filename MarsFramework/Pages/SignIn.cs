@@ -1,5 +1,6 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+﻿using MarsFramework.Global;
+using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 
 namespace MarsFramework.Pages
 {
@@ -7,7 +8,10 @@ namespace MarsFramework.Pages
     {
         public SignIn()
         {
-            PageFactory.InitElements(Global.GlobalDefinitions.driver, this);
+
+            ExcelLibHelp.PopulateInCollection(@"MarsFramework\ExcelData\TestDataShareSkill.xlsx", "SignIn");
+            PageFactory.InitElements(GlobalDefinitions.driver, this);
+            
         }
 
         #region  Initialize Web Elements 
@@ -29,8 +33,32 @@ namespace MarsFramework.Pages
 
         #endregion
 
-        internal void LoginSteps()
+        public  void LoginSteps()
         {
+            Global.GlobalDefinitions.driver.Navigate().GoToUrl(ExcelLibHelp.ReadData(2,"Url"));
+                        
+            //Click the sign-In tab
+            SignIntab.Click();
+
+            //sending values to email id
+            Email.SendKeys(ExcelLibHelp.ReadData(2, "Username"));
+
+            //sending velues of password
+            Password.SendKeys(ExcelLibHelp.ReadData(2, "Password"));
+
+            //Click login Button
+            LoginBtn.Click();
+
+            Global.GlobalDefinitions.wait(5);
+
+
+        }
+        public Profile Navigation()
+        {
+          
+
+            //Return the "PROFILE" page object type
+            return new Profile();
 
         }
     }
