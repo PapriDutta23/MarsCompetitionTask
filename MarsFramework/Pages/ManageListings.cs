@@ -59,7 +59,7 @@ namespace MarsFramework.Pages
                         //Get the Text of the "Category"
                         var Category = GlobalDefinitions.driver.FindElement(By.XPath("(//td[contains(@class,'one wide')])[+ i +]")).Text;
                         //Assert the Category
-                        Assert.Equals(Category, "Programming & Tech");
+                        Assert.Equals(Category, ExcelLibHelp.ReadData(2, "Category"));
 
                         for (int j = 1; j <= 9; j = j + 2)
                         {
@@ -67,14 +67,14 @@ namespace MarsFramework.Pages
                             Thread.Sleep(2000);
                             var Title = GlobalDefinitions.driver.FindElement(By.XPath("(//td[@class='four wide'])[+ j +]")).Text;
                             //Assert the Titel
-                            Assert.Equals(Title, "Software Tester");
+                            Assert.Equals(Title, ExcelLibHelp.ReadData(2, "Title"));
 
                             for (int k = 2; k <= 10; k = k + 2)
                             {
                                 Thread.Sleep(2000);
                                 //Get The Text of "Description"
                                 var Description = GlobalDefinitions.driver.FindElement(By.XPath("(//td[contains(@class,'four wide')])[+ k +]")).Text;
-                                Assert.Equals(Description, "Api , Selenium C Tester");
+                                Assert.Equals(Description, ExcelLibHelp.ReadData(2, "Description"));
                                 break;
                                 //Assert the Description
                             }
