@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\..\Complete.cs" />
     <Compile Include="Config\MarsResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,12 +127,18 @@
     <Compile Include="Global\ConstantHelpers.cs" />
     <Compile Include="Global\ExcelLibHelp.cs" />
     <Compile Include="Global\GlobalDefinitions.cs" />
-    <Compile Include="Pages\ManageListings.cs" />
-    <Compile Include="Pages\ShareSkill.cs" />
-    <Compile Include="Pages\SignIn.cs" />
-    <Compile Include="Pages\SignUp.cs" />
-    <Compile Include="Pages\Profile.cs" />
-    <Compile Include="Test\Program.cs" />
+    <Compile Include="Manage Listing_Pages\ManageListing.cs" />
+    <Compile Include="Search Skills_Pages\SearchSkills.cs" />
+    <Compile Include="ShareSkill_Pages\ShareSkill.cs" />
+    <Compile Include="ShareSkill_Pages\SignIn.cs" />
+    <Compile Include="ShareSkill_Pages\SignUp.cs" />
+    <Compile Include="PROFILE_Pages\Avlblty_Hrs_ErnTrgt.cs" />
+    <Compile Include="PROFILE_Pages\Certification.cs" />
+    <Compile Include="PROFILE_Pages\Password.cs" />
+    <Compile Include="PROFILE_Pages\Description.cs" />
+    <Compile Include="PROFILE_Pages\Education.cs" />
+    <Compile Include="PROFILE_Pages\Languages.cs" />
+    <Compile Include="PROFILE_Pages\Skills.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +171,10 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Feature\" />
+    <Folder Include="Hook Up\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
